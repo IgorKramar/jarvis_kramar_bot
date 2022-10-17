@@ -33,5 +33,5 @@ app.post('/new-message', async (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log('Jarvis TG bot listening on port 3000');
+    console.log('Jarvis telegram bot listening on port 3000');
 })
