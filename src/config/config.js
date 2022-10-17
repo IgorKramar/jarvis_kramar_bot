@@ -23,5 +23,5 @@ if (error) {
 module.exports = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
-  botToken: envVars.BOT_TOKEN,
+  botToken: `bot${envVars.BOT_TOKEN}`,
 }
