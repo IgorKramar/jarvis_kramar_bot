@@ -1,9 +1,11 @@
-const app = require('./app');
+import { Server } from "http";
 
-const config = require('./config/config');
-const logger = require('./config/logger');
+import app from "./app";
 
-let server;
+import config from "./config/config";
+import logger from './config/logger';
+
+let server: Server;
 const bootstrap = () => {
   server = app.listen(config.port, () => {
     logger.info(`Jarvis listening to port ${config.port}`);
@@ -21,7 +23,7 @@ const exitHandler = () => {
   }
 };
 
-const unexpectedErrorHandler = (error) => {
+const unexpectedErrorHandler = (error: Error) => {
   logger.error(error);
   exitHandler();
 };

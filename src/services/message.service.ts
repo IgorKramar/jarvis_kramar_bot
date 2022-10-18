@@ -1,9 +1,9 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const logger = require('../config/logger');
-const config = require('../config/config');
+import logger from '../config/logger';
+import config from '../config/config';
 
-const processIncomingMessage = async (telegramMessage) => {
+const processIncomingMessage = async (telegramMessage: any) => {
   console.log('message', telegramMessage);
   try {
     await axios.post(
@@ -16,10 +16,9 @@ const processIncomingMessage = async (telegramMessage) => {
     logger.info('Message posted.');
   } catch (error) {
     logger.error("Error: ", error);
-    res.end("Error: " + error);
   }
 }
 
-module.exports = {
+export default {
   processIncomingMessage
 }

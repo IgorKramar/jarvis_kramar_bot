@@ -1,6 +1,6 @@
-const catchAsync = require('../utils/catchAsync.js');
+import messageService from "../services/message.service";
 
-const messageService = require('../services/message.service.js');
+import catchAsync from "../utils/catchAsync";
 
 const processIncomingMessage = catchAsync(async (req, res) => {
   const { message } = req.body;
@@ -10,6 +10,6 @@ const processIncomingMessage = catchAsync(async (req, res) => {
   messageService.processIncomingMessage(message);
 });
 
-module.exports = {
+export default {
   processIncomingMessage
 }
