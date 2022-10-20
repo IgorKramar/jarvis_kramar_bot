@@ -1,19 +1,11 @@
-import axios from 'axios';
+import TelegramAPI from './telegramAPI.service';
 
 import logger from '../config/logger';
-import config from '../config/config';
-import { TgMessage } from './telegram/types';
+import { TgMessage } from '../types';
 
 const processIncomingMessage = async (telegramMessage: TgMessage) => {
-  console.log('message', telegramMessage);
   try {
-    await axios.post(
-      `https://api.telegram.org/${config.botToken}/sendMessage`,
-      {
-        chat_id: telegramMessage?.chat?.id,
-        text: `Приветствую вас, ${telegramMessage.from?.first_name} ${telegramMessage.from?.last_name}!`,
-      }
-    );
+    await TelegramAPI.greeting(telegramMessage.chat?.id, telegramMessage.from);
     logger.info('Message posted.');
   } catch (error) {
     logger.error("Error: ", error);
